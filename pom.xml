@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>highstock</artifactId>
-    <version>1.2.5-SNAPSHOT</version>
+    <version>1.2.4-full</version>
     <name>Highstock</name>
     <description>WebJar for Highstock</description>
     <url>http://webjars.org</url>
@@ -47,9 +47,9 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstreamVersion>1.2.4</upstreamVersion>
-        <downloadUrl>http://code.highcharts.com/stock/${upstreamVersion}</downloadUrl>
-        <destinationDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstreamVersion}</destinationDir>
+        <highstock.version>1.2.4</highstock.version>
+        <highstock.sourceUrl>http://www.highcharts.com/downloads/zips/</highstock.sourceUrl>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${highstock.version}</destDir>
     </properties>
 
     <build>
@@ -60,13 +60,32 @@
                 <version>1.0-beta-4</version>
                 <executions>
                     <execution>
-                        <id>download-js</id>
                         <phase>process-resources</phase>
                         <goals><goal>download-single</goal></goals>
                         <configuration>
-                            <url>${downloadUrl}</url>
-                            <fromFile>highstock.js</fromFile>
-                            <toDir>${destinationDir}</toDir>
+                            <url>${highstock.sourceUrl}</url>
+                            <fromFile>Highstock-${highstock.version}.zip</fromFile>
+                            <toFile>${project.build.directory}/highstock.zip</toFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+			<plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals><goal>run</goal></goals>
+                        <configuration>
+                            <target>
+                                <echo message="unzip archive" />
+                                <unzip src="${project.build.directory}/highstock.zip" dest="${project.build.directory}" />
+                                <echo message="moving resources" />
+                                <move todir="${destDir}/js">
+                                    <fileset dir="${project.build.directory}/js" />
+                                </move>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
