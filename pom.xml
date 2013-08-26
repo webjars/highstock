@@ -47,7 +47,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <highstock.version>1.3.4</highstock.version>
+        <highstock.version>1.3.5</highstock.version>
         <highstock.sourceUrl>http://code.highcharts.com/zips/</highstock.sourceUrl> 
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${highstock.version}</destDir>
     </properties>
