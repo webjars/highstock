@@ -47,7 +47,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <highstock.version>4.2.3</highstock.version>
+        <highstock.version>4.2.4</highstock.version>
         <highstock.sourceUrl>https://github.com/highslide-software/highstock-release/archive</highstock.sourceUrl> 
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${highstock.version}</destDir>
     </properties>
