@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>highstock</artifactId>
-    <version>4.2.7-SNAPSHOT</version>
+    <version>4.2.6-1-SNAPSHOT</version>
     <name>Highstock</name>
     <description>WebJar for Highstock</description>
     <url>http://webjars.org</url>
@@ -48,7 +48,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <highstock.sourceUrl>https://github.com/highslide-software/highstock-release/archive</highstock.sourceUrl> 
-        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${highstock.version}</destDir>
+        <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
             {
                 "paths": {
@@ -63,7 +63,7 @@
             <plugin>
                 <groupId>com.jamesward</groupId>
                 <artifactId>unsnapshot-maven-plugin</artifactId>
-                <version>0.1</version>
+                <version>0.2</version>
                 <executions>
                     <execution>
                         <phase>initialize</phase>
@@ -84,7 +84,7 @@
                         <goals><goal>download-single</goal></goals>
                         <configuration>
                             <url>${highstock.sourceUrl}</url>
-                            <fromFile>v${version.unsnapshot}.zip</fromFile>
+                            <fromFile>v${version.unrevise}.zip</fromFile>
                             <toFile>${project.build.directory}/highstock.zip</toFile>
                         </configuration>
                     </execution>
@@ -103,7 +103,7 @@
                                 <unzip src="${project.build.directory}/highstock.zip" dest="${project.build.directory}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/highstock-release-${version.unsnapshot}" />
+                                    <fileset dir="${project.build.directory}/highstock-release-${version.unrevise}" />
                                 </move>
                             </target>
                         </configuration>
