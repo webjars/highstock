@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>highstock</artifactId>
-    <version>5.0.1-SNAPSHOT</version>
+    <version>5.0.1</version>
     <name>Highstock</name>
     <description>WebJar for Highstock</description>
     <url>http://webjars.org</url>
@@ -34,7 +34,7 @@
         <url>http://github.com/webjars/highstock</url>
         <connection>scm:git:https://github.com/webjars/highstock.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/highstock.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>highstock-5.0.1</tag>
     </scm>
 
     <developers>
