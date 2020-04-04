@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>highstock</artifactId>
-    <version>6.0.4-SNAPSHOT</version>
+    <version>8.0.4-SNAPSHOT</version>
     <name>Highstock</name>
     <description>WebJar for Highstock</description>
     <url>http://webjars.org</url>
@@ -47,7 +47,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <highstock.sourceUrl>https://github.com/highslide-software/highstock-release/archive</highstock.sourceUrl> 
+        <highstock.sourceUrl>https://code.highcharts.com/zips</highstock.sourceUrl>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
             {
@@ -84,7 +84,7 @@
                         <goals><goal>download-single</goal></goals>
                         <configuration>
                             <url>${highstock.sourceUrl}</url>
-                            <fromFile>v${version.unrevise}.zip</fromFile>
+                            <fromFile>Highstock-${version.unrevise}.zip</fromFile>
                             <toFile>${project.build.directory}/highstock.zip</toFile>
                         </configuration>
                     </execution>
@@ -100,11 +100,7 @@
                         <configuration>
                             <target>
                                 <echo message="unzip archive" />
-                                <unzip src="${project.build.directory}/highstock.zip" dest="${project.build.directory}" />
-                                <echo message="moving resources" />
-                                <move todir="${destDir}">
-                                    <fileset dir="${project.build.directory}/highstock-release-${version.unrevise}" />
-                                </move>
+                                <unzip src="${project.build.directory}/highstock.zip" dest="${destDir}"/>
                             </target>
                         </configuration>
                     </execution>
